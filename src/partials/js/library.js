@@ -1,3 +1,3 @@
-import './cards-home';
+import './cards-library';
 import './create-markup';
 import './tui-pagination';
