@@ -16,22 +16,22 @@
   width: 25px;
   height: 25px;
 
-  &:first-child {
+  & :first-child {
     background: #19a68c;
     animation-delay: -1.5s;
   }
 
-  &:nth-child(2) {
+  & :nth-child(2) {
     background: #f63d3a;
     animation-delay: -1s;
   }
 
-  &:nth-child(3) {
+  & :nth-child(3) {
     background: #fda543;
     animation-delay: -0.5s;
   }
 
-  &:last-child {
+  & :last-child {
     background: #193b48;
   }
 }
