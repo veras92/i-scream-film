@@ -8,13 +8,13 @@
 }
 
 .preloader {
-  position: relative;
-  bottom: 0;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, -50%);
   /*change these sizes to fit into your project*/
-  width: 25px;
-  height: 25px;
+  width: 100px;
+  height: 100px;
 
   & :first-child {
     background: #19a68c;
