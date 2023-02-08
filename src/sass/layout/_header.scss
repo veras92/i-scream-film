@@ -1,15 +1,71 @@
 .header {
   position: relative;
-  padding-top: 40px;
+  padding-top: 39px;
   padding-bottom: 92px;
-  background-color: rgb(49, 0, 0);
-  //   background-image: url('../images/home-header-background-mobile.jpg');
+  background-image: url('../images/home-header-mobile.jpg');
+  background-size: 320px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(../images/home-header-mobile@2x.jpg);
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: url(../images/home-header-tablet.jpg);
+    background-size: 768px;
+    padding-bottom: 80px;
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/home-header-tablet@2x.jpg);
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url(../images/home-header-desktop.jpg);
+    background-size: 1280px;
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/home-header-desktop@2x.jpg);
+    }
+  }
 
   &--library {
     padding-bottom: 62px;
+    background-image: url('../images/library-header-mobile.jpg');
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/library-header-mobile@2x.jpg);
+    }
 
     @media screen and (min-width: 768px) {
+      padding-top: 37px;
       padding-bottom: 60px;
+      background-image: url(../images/library-header-tablet.jpg);
+
+      @media screen and (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(../images/library-header-tablet@2x.jpg);
+      }
+    }
+
+    @media screen and (min-width: 1280px) {
+      background-image: url(../images/library-header-desktop.jpg);
+
+      @media screen and (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(../images/library-header-desktop@2x.jpg);
+      }
     }
   }
 }
@@ -41,9 +97,9 @@
 
 .header__wrapper {
   display: flex;
-  align-items: start;
+  align-items: center;
   width: 100%;
-  margin-bottom: 54px;
+  margin-bottom: 49px;
   column-gap: 15px;
 
   &--library {
