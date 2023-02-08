@@ -1,43 +1,111 @@
+.logging--is-hiden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: scale(0.9);
+}
+
+.display-none {
+  display: none;
+}
+
 .backdrop-login {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out,
+    transform 300ms linear;
+  z-index: 50;
 }
+
 .login-modal {
-  color: black;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  padding: 0px 50px;
-
-  height: 600px;
-
-  background-color: white;
-
-  display: flex;
-  justify-items: center;
-  align-items: center;
-}
-.login-modal__content {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
-  gap: 30px;
+
+  width: 280px;
+  padding: 60px 20px;
+
+  border-radius: 10px;
+  box-shadow: 18px 20px 28px -4px rgba(225, 84, 100, 0.75);
+  -webkit-box-shadow: 18px 20px 28px -4px rgba(225, 84, 100, 0.75);
+  -moz-box-shadow: 18px 20px 28px -4px rgba(225, 84, 100, 0.75);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-dark);
+
+  @media screen and (min-width: 768px) {
+    width: 480px;
+  }
 }
+
+.login-modal__content {
+  align-self: center;
+}
+
+.auth-backdrop-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 14px;
+  height: 14px;
+
+  stroke: var(--color-text-dark);
+  transition: stroke 250ms ease-in-out;
+
+  &:hover {
+    stroke: var(--color-accent);
+  }
+}
+
+.login-modal__title {
+  font-size: 20px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  text-align: center;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+
+  color: var(--color-text-dark);
+
+  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out,
+    transform 300ms linear;
+}
+
 .login-modal-container {
   display: flex;
+  align-items: center;
   gap: 30px;
 }
-.logging--is-hiden {
-  display: none;
+
+.login-modal__email,
+.login-modal__google {
+  padding: 8px 14px;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-dark);
+  border: 1px solid var(--color-text-dark);
+  border-radius: 5px;
+
+  transition: border 250ms ease-in-out, background-color 250ms ease-in-out,
+    color 250ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
+  }
 }
+
 .firebaseui-auth-container {
-  width: 300px;
-  height: 300px;
+  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out,
+    transform 300ms linear;
 }
