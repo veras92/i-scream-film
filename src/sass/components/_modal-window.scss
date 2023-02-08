@@ -1,0 +1,156 @@
+body.show-modal .backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
+
+body.show-modal .modal {
+  transform: scale(1);
+}
+
+.btn-modal {
+  position:absolute;
+  top: 16px;
+  right: 16px;
+
+  width: 14px;
+  height: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+      
+}
+
+.backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background-color:rgba(0, 0, 0, 0.5);
+  z-index: 999;
+
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+.modal-window {
+  outline: 10px solid rgb(43, 5, 94);
+  width: 806px;
+  height: 558px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  display: flex;
+  background-color: white;
+  color:black;
+}
+
+.cinema-img {
+  outline: 1px solid rgb(32, 230, 6);
+
+  height: 478px;
+  width: 375px;
+  margin-right: 16px;
+
+}
+
+.cinema-info{
+  outline: 1px solid rgb(223, 14, 84);
+
+  width: 391px;
+
+}
+
+.cinema-info_item {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+}
+
+.cinema-info__list{
+  outline: 1px solid rgb(102, 71, 3);
+  display: flex;
+  
+}
+
+.cinema-attribute {
+  outline: 1px solid red;
+  width: 152px;
+}
+
+.cinema-atrtribute_item{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  padding-bottom: 8px;
+}
+
+.cinema-attrebute_value{
+  outline: 1px solid teal;
+
+}
+
+.cinema-attrebute_value__item {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  padding-bottom: 8px;
+}
+
+.cinema-about {
+  outline: 1px solid rgb(3, 48, 51);
+  margin-bottom: 20px;
+}
+
+.cinema-about_item {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.cinema-about_description {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+}
+
+.btn-modal-cinema {
+  width: 150px;
+  background-color: white;
+  height: 50px;
+  margin-left: 8px;
+  border: 2px solid red ;
+
+ 
+}
+
+.btn-modal-cinema:hover,
+.btn-modal-cinema:focus {
+    background-color: #FF6B01;
+}
