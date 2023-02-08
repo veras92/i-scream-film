@@ -7,10 +7,11 @@ const API_KEY = 'f68110fe6010762197ab45abbadc1a08';
 export class FimlsApi {
   #query = 'key';
 
-  async getTrendingFilms() {
+  async getTrendingFilms(page) {
     const { data } = await axios.get('/trending/all/day', {
       params: {
         api_key: API_KEY,
+        page,
       },
     });
 
@@ -65,9 +66,13 @@ export class FimlsApi {
 
 // const filmsApi = new FimlsApi();
 
-// filmsApi.getTrendingFilms().then(console.log);
-// filmsApi.getFilmsByKeyword().then(console.log);
+// filmsApi.getTrendingFilms(1).then(console.log);
+
+// filmsApi.query = searchValue;
+// filmsApi.getFilmsByKeyword(1).then(console.log);
+
 // filmsApi.getFilmById(406563).then(console.log);
+
 // filmsApi.getFilmTrailer(406563).then(console.log);
 
 //backend info:
