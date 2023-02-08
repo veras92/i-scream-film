@@ -51,6 +51,16 @@ export class FimlsApi {
     return data;
   }
 
+  async getGenres() {
+    const { data } = await axios.get('/genre/movie/list', {
+      params: {
+        api_key: API_KEY,
+      },
+    });
+
+    return data;
+  }
+
   get query() {
     return this.#query;
   }
