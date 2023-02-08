@@ -11,3 +11,4 @@ export const refs = {
 
 // class для списку карток з фільмами?
 // вставити pagination розмітку під цей список
+//  <div id="pagination" class="tui-pagination is-hidden"></div>;
