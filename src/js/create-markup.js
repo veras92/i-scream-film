@@ -18,7 +18,7 @@
 //       <li class="card" data-id="${id} >
 //           <img class="card__img" src="https://image.tmdb.org/t/p/original/${src}" alt="${title}" data-source="{original}"  loading="lazy">
 //           <h2 class="card__title">${title}</h2>
-//           <p class="card__text">{Drama, Action} | ${date} <span>${raiting}</span></p>
+//           <p class="card__text">{Drama, Action} | ${date} </p>
 //       </li>`;
 //         }
 //       )
@@ -27,15 +27,23 @@
 //     return markup;
 //   }
 
-//   createLibraryCards(results) {
-//     const cardsByString = arrOfCards
-//       .map(el => {
+//   createHomepageCards(results) {
+//     const markup = arrOfCards
+//       .map(
+//         ({
+//           id,
+//           poster_path: src,
+//           title,
+//           release_date: date,
+//           vote_average: raiting,
+//           genre_ids,
+//         }) =>  {
 //         return `
 //       <li class="card">
 //         <a class="card__link" href="{original}" data-id="{1234}">
 //           <img class="card__img" src="./images/logo.png" alt="{poster}" data-source="{original}"  loading="lazy">
 //           <h2 class="card__title">{GREYHOUND}</h2>
-//           <p class="card__text">{Drama, Action} | {2020}<span class="card__text_rating">{10.0}</span></p>
+//           <p class="card__text">{Drama, Action} | {2020}<span class="card__text_rating">${raiting}</span></p>
 //         </a>
 //       </li>`;
 //       })
