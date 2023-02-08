@@ -31,11 +31,8 @@ const options = {
 
 export const pagination = new Pagination('pagination', options);
 
-export class TuiPagination {
-  show() {
-    refs.paginationBlock.classList.remove('is-hidden');
-  }
-  hide() {
-    refs.paginationBlock.classList.add('is-hidden');
-  }
-}
+export const showPagination = () =>
+  refs.paginationBlock.classList.remove('is-hidden');
+
+export const hidePagination = () =>
+  refs.paginationBlock.classList.add('is-hidden');

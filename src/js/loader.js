@@ -1,11 +1,4 @@
 import { refs } from './refs';
 
-export class Loader {
-  show() {
-    refs.preloader.classList.remove('is-hidden');
-  }
-
-  hide() {
-    refs.preloader.classList.add('is-hidden');
-  }
-}
+export const showLoader = () => refs.loader.classList.remove('is-hidden');
+export const hideLoader = () => refs.loader.classList.add('is-hidden');

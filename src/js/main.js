@@ -1,46 +1,45 @@
 import { FimlsApi } from './film-service';
-import { pagination, TuiPagination } from './tui-pagination';
+import { pagination, showPagination, hidePagination } from './tui-pagination';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { Loader } from './loader';
+import { showLoader, hideLoader } from './loader';
 import { refs } from './refs';
 
 // функції для homepage
 
 const filmsApi = new FimlsApi();
-const loader = new Loader();
-const tuiPagination = new TuiPagination();
 const page = pagination.getCurrentPage();
 
-// refs.homapageForm.addEventListener('submit', onFormSubmit);
+refs.homapageForm.addEventListener('submit', onFormSubmit);
 
-// loader.show();
-// filmsApi
-//   .getTrendingFilms(page)
-//   .then(({ results, total_pages }) => {
-//     pagination.reset(total_pages);
-//     renderCards(results);
-//     tuiPagination.show();
-//   })
-//   .catch(err => {
-//     Notify.failure(err.message);
-//   })
-//   .finally(() => {
-//     loader.hide();
-//   });
+showLoader();
+filmsApi
+  .getTrendingFilms(page)
+  .then(({ results, total_pages }) => {
+    pagination.reset(total_pages);
+    renderCards(results);
+    showPagination();
+  })
+  .catch(err => {
+    hidePagination();
+    Notify.failure(err.message);
+  })
+  .finally(() => {
+    hideLoader();
+  });
 
-// pagination.on('afterMove', loadMoreTrendingFilms);
+pagination.on('afterMove', loadMoreTrendingFilms);
 
 async function loadMoreTrendingFilms(e) {
   const currentPage = e.page;
   try {
-    loader.show();
+    showLoader();
     const { results } = await filmsApi.getTrendingFilms(currentPage);
     renderCards(results);
   } catch (err) {
-    tuiPagination.hide();
+    hidePagination();
     Notify.failure(err.message);
   } finally {
-    loader.hide();
+    hideLoader();
   }
 }
 
@@ -49,7 +48,7 @@ async function onFormSubmit(e) {
   pagination.off('afterMove', loadMoreTrendingFilms);
   pagination.off('afterMove', loadMoreSearchingFilms);
   pagination.on('afterMove', loadMoreSearchingFilms);
-  tuiPagination.hide();
+  hidePagination();
   refs.list.innerHTML = '';
 
   const searchValue = e.currentTarget.elements.query.value.trim();
@@ -60,33 +59,33 @@ async function onFormSubmit(e) {
   filmsApi.query = searchValue;
 
   try {
-    loader.show();
+    showLoader();
     const { results, total_pages } = await filmsApi.getFilmsByKeyword(page);
     if (results.length === 0) {
       return Notify.failure('Enter correct query!');
     }
     pagination.reset(total_pages);
     renderCards(results);
-    tuiPagination.show();
+    showPagination();
   } catch (err) {
-    tuiPagination.hide();
+    hidePagination();
     Notify.failure(err.message);
   } finally {
-    loader.hide();
+    hideLoader();
   }
 }
 
 async function loadMoreSearchingFilms(e) {
   const currentPage = e.page;
   try {
-    loader.show();
+    showLoader();
     const { results } = await filmsApi.getFilmsByKeyword(currentPage);
     renderCards(results);
   } catch (err) {
-    tuiPagination.hide();
+    hidePagination();
     Notify.failure(err.message);
   } finally {
-    loader.show();
+    showLoader();
   }
 }
 
