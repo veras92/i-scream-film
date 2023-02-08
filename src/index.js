@@ -6,6 +6,7 @@ import './js/create-markup';
 import './js/film-service';
 import './js/homepage';
 import './js/loader';
-import './js/modal-window';
 import './js/tui-pagination';
 import './js/firebase';
+import './js/team_modal';
+

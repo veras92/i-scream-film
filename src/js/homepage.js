@@ -38,6 +38,7 @@ async function loadMoreTrendingFilms(e) {
     hidePagination();
     Notify.failure(err.message);
   } finally {
+    scrollToTop();
     hideLoader();
   }
 }
@@ -84,6 +85,7 @@ async function loadMoreSearchingFilms(e) {
     hidePagination();
     Notify.failure(err.message);
   } finally {
+    scrollToTop();
     hideLoader();
   }
 }
@@ -91,4 +93,11 @@ async function loadMoreSearchingFilms(e) {
 function renderCards(results) {
   const markup = createHomepageCards(results);
   refs.list.innerHTML = markup;
+}
+
+function scrollToTop() {
+  window.scroll({
+    top: 0,
+    behavior: 'smooth',
+  });
 }
