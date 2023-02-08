@@ -3,17 +3,17 @@
     <div class="header__wrapper">
       <nav class="header__navigation">
         <a href="/" class="logo">
-          <!-- <svg class="logo__icon">
-            <use href="./images/sprite.svg#icon-film"></use></svg
-          > -->
+          <svg class="logo__icon">
+            <use href="./images/sprite.svg#icon-logo"></use>
+          </svg>
           <span class="logo__title">Filmoteka</span></a
         >
         <ul class="header__list">
-          <li><a href="/" class="header__link">Home</a></li>
           <li>
-            <a href="./library.html" class="header__link header__link--current"
-              >My library</a
-            >
+            <a href="/" class="header__link header__link--current">Home</a>
+          </li>
+          <li>
+            <a href="./library.html" class="header__link">My library</a>
           </li>
         </ul>
       </nav>
@@ -24,16 +24,21 @@
         Log in
       </button>
     </div>
-    <form class="header__form">
-      <input type="text" placeholder="Movie search" class="header__input" />
+    <form class="header__form js-search-form">
+      <input
+        type="text"
+        placeholder="Movie search"
+        class="header__input"
+        name="query"
+      />
       <button type="submit" class="header__submit-button">
-        <!-- <svg class="header__icon">
+        <svg class="header__icon">
           <use href="./images/sprite.svg#icon-search"></use>
-        </svg> -->
+        </svg>
       </button>
     </form>
     <p class="header__text">
-      Search result not successful. Enter the correct movie name and try again
+      Search result not successful. Enter the correct movie name and try again.
     </p>
   </div>
 </header>

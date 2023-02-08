@@ -1,11 +1,11 @@
 <header class="header header--library">
   <div class="container">
-    <div class="header__wrapper">
+    <div class="header__wrapper header__wrapper--library">
       <nav class="header__navigation">
         <a href="/" class="logo">
-          <!-- <svg class="logo__icon">
-            <use href="./images/sprite.svg#icon-film"></use></svg
-          > -->
+          <svg class="logo__icon">
+            <use href="./images/sprite.svg#icon-logo"></use>
+          </svg>
           <span class="logo__title">Filmoteka</span></a
         >
         <ul class="header__list">
@@ -25,9 +25,16 @@
       </button>
     </div>
     <ul class="header__list header__list--buttons">
-      <li><button type="button" class="header__button">Watched</button></li>
       <li>
-        <button type="button" class="header__button header__button--queue">
+        <button type="button" class="header__button js-watched-button">
+          Watched
+        </button>
+      </li>
+      <li>
+        <button
+          type="button"
+          class="header__button header__button--queue js-queue-button"
+        >
           Queue
         </button>
       </li>
