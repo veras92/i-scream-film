@@ -9,7 +9,7 @@ import { refs } from './refs';
 const filmsApi = new FimlsApi();
 const page = pagination.getCurrentPage();
 
-refs.homapageForm.addEventListener('submit', onFormSubmit);
+refs.form.addEventListener('submit', onFormSubmit);
 
 showLoader();
 filmsApi
