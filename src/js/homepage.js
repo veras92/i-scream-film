@@ -84,7 +84,7 @@ async function loadMoreSearchingFilms(e) {
     hidePagination();
     Notify.failure(err.message);
   } finally {
-    showLoader();
+    hideLoader();
   }
 }
 

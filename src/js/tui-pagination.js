@@ -32,7 +32,7 @@ const options = {
 export const pagination = new Pagination('pagination', options);
 
 export const showPagination = () =>
-  refs.paginationBlock.classList.remove('is-hidden');
+  refs.paginationBlock.classList.remove('visually-hidden');
 
 export const hidePagination = () =>
-  refs.paginationBlock.classList.add('is-hidden');
+  refs.paginationBlock.classList.add('visually-hidden');

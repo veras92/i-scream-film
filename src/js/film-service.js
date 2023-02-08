@@ -5,10 +5,10 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 const API_KEY = 'f68110fe6010762197ab45abbadc1a08';
 
 export class FimlsApi {
-  #query = 'key';
+  #query = '';
 
   async getTrendingFilms(page) {
-    const { data } = await axios.get('/trending/all/day', {
+    const { data } = await axios.get('/trending/movie/day', {
       params: {
         api_key: API_KEY,
         page,
@@ -43,16 +43,6 @@ export class FimlsApi {
 
   async getFilmTrailer(movie_id) {
     const { data } = await axios.get(`/movie/${movie_id}/videos`, {
-      params: {
-        api_key: API_KEY,
-      },
-    });
-
-    return data;
-  }
-
-  async getGenres() {
-    const { data } = await axios.get('/genre/movie/list', {
       params: {
         api_key: API_KEY,
       },
