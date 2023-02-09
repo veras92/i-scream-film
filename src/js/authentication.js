@@ -79,12 +79,11 @@ function googleAuthentication() {
 }
 
 // авторизація через пошту
-
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
 function emailAuthentication() {
   modalContentEl.classList.add('logging--is-hiden');
   firebaseContainerEl.classList.remove('logging--is-hiden');
 
-  const ui = new firebaseui.auth.AuthUI(firebase.auth());
   ui.start('#firebaseui-auth-container', {
     signInOptions: [
       {
@@ -107,3 +106,16 @@ function emailAuthentication() {
     },
   });
 }
+
+//  ================== figatix
+
+const closeAuthBtn = document.querySelector('.auth-backdrop-close');
+
+closeAuthBtn.addEventListener('click', () => {
+  backDropEl.classList.add('logging--is-hiden');
+  modalContentEl.classList.remove('display-none');
+  modalContentEl.classList.remove('logging--is-hiden');
+  firebaseContainerEl.classList.add('display-none');
+});
+
+// ================== figatix
