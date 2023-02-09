@@ -15,7 +15,6 @@ const errorText = {
 
 refs.form.addEventListener('submit', onFormSubmit);
 
-showLoader();
 filmsApi
   .getTrendingFilms(page)
   .then(({ results, total_pages }) => {
@@ -57,7 +56,6 @@ async function onFormSubmit(e) {
   if (!searchValue) return showErr(errorText.noQuery);
 
   filmsApi.query = searchValue;
-  refs.list.innerHTML = '';
 
   try {
     showLoader();
