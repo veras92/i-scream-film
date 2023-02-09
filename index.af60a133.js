@@ -3050,5 +3050,5 @@ function(e){gp=qa,Ua(new Gi("database",(function(e,t){var n=t.instanceIdentifier
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */()}();
-//# sourceMappingURL=index.b0d56c33.js.map
+ */(),new IntersectionObserver((function(e){e.forEach((function(e){e.isIntersecting?nr.upBtn.classList.remove("visually-hidden"):nr.upBtn.classList.add("visually-hidden")}))})).observe(nr.footer)}();
+//# sourceMappingURL=index.af60a133.js.map

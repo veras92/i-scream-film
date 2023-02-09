@@ -3640,5 +3640,5 @@ function(e){Su=io,Jr(new fr("database",((e,{instanceIdentifier:t})=>Gp(e.getProv
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */();
-//# sourceMappingURL=index.1b600b9e.js.map
+ */(),new IntersectionObserver((function(e){e.forEach((e=>{e.isIntersecting?Ln.upBtn.classList.remove("visually-hidden"):Ln.upBtn.classList.add("visually-hidden")}))})).observe(Ln.footer);
+//# sourceMappingURL=index.f87adc8e.js.map
