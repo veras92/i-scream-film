@@ -1,5 +1,5 @@
 import {
-  getGenresList,
+  getGenresListById,
   getFullYear,
   converTittle,
   getSrc,
@@ -9,7 +9,7 @@ export const createHomepageCards = results => {
   const markup = results
     .map(({ id, poster_path, title, release_date, genre_ids }) => {
       const year = getFullYear(release_date);
-      const genresList = getGenresList(genre_ids);
+      const genresList = getGenresListById(genre_ids);
       const convertedTitle = converTittle(title);
       const src = getSrc(poster_path);
       return `

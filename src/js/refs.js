@@ -5,4 +5,6 @@ export const refs = {
   paginationBlock: document.querySelector('#pagination'),
   header: document.querySelector('.header'),
   errText: document.querySelector('.header__text'),
+  upBtn: document.querySelector('.up-link'),
+  footer: document.querySelector('.heart-icon'),
 };
