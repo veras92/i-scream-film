@@ -1,21 +1,23 @@
-// import { getDatabase, ref, set, onValue, get, child } from 'firebase/database';
-// import { app } from './authentication';
-// import { getAuth } from 'firebase/auth';
+import { getDatabase, ref, set, onValue, get, child } from 'firebase/database';
+import { app } from './authentication';
+import { getAuth } from 'firebase/auth';
 
 // const database = getDatabase(app);
 
-// //
+// const btnModalWatched = document.querySelector('.btn-modal-cinema');
+
+// // отримуємо id користувача
 
 // function getUserId() {
 //   const auth = getAuth();
-
+//   console.log(auth);
 //   let userId = null;
 //   auth.onAuthStateChanged(user => {
 //     if (user) {
 //       userId = user.uid;
 //       //   writeUserData(userId);
 //       //   listenerDataBase(userId);
-//       getData(userId);
+//       //   getData(userId);
 //       console.log(userId);
 //     }
 //   });
