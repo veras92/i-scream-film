@@ -3,7 +3,7 @@
   padding-top: 39px;
   padding-bottom: 92px;
   background-image: url('../images/home-header-mobile.jpg');
-  background-size: 320px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 
@@ -15,7 +15,6 @@
 
   @media screen and (min-width: 768px) {
     background-image: url(../images/home-header-tablet.jpg);
-    background-size: 768px;
     padding-bottom: 80px;
 
     @media screen and (min-device-pixel-ratio: 2),
@@ -27,7 +26,6 @@
 
   @media screen and (min-width: 1280px) {
     background-image: url(../images/home-header-desktop.jpg);
-    background-size: 1280px;
 
     @media screen and (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
