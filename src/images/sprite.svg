@@ -21,5 +21,11 @@
 <path fill="none" stroke="#fff" style="stroke: currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M22.667 22.649h6.667"></path>
 <path fill="none" stroke="#fff" style="stroke: currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M22.667 9.954h6.667"></path>
 </symbol>
+<symbol id="icon-fb" viewBox="0 0 16 32">
+<path d="M14.143 15.971h-4.033v14.865h-6.112v-14.865h-2.906v-5.222h2.906v-3.382c0-2.417 1.142-6.204 6.167-6.204l4.527 0.019v5.072h-3.284c-0.538 0-1.297 0.272-1.297 1.425v3.073h4.567l-0.534 5.219z"></path>
+</symbol>
+<symbol id="icon-tg" viewBox="0 0 44 32">
+<path d="M17.346 21.048l-0.676 8.86c0.966 0 1.384-0.388 1.886-0.852l4.528-4.040 9.38 6.414c1.72 0.894 2.932 0.422 3.396-1.478l6.16-26.932c0.546-2.372-0.92-3.3-2.596-2.72l-36.194 12.934c-2.47 0.896-2.432 2.18-0.42 2.766l9.254 2.686 21.494-12.552c1.010-0.626 1.93-0.28 1.174 0.346l-17.386 14.57z"></path>
+</symbol>
 </defs>
 </svg>

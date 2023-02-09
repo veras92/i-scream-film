@@ -2,27 +2,12 @@
   --desk: 1200px; // desktop
   --tab: 768px; // tablet
   --mob: 480px; // mobile
-  
-  --font-mobile-scary: 'Butcherman', cursive; //!!!!!!
-  --font-mobile-creepy: 'Nosifer', cursive; //!!!!11
-  --color-text-light: #fcfcfc;
-  --color-text-dark: #131313; //!!!!!!!!
- 
-  --color-btn-default: #f8d24e; //!!!!!!!
-  --color-btn-hover: #0a8817;
-  --color-btn-disabled: #ababab;
-  --color-bg-product-green: #aec6a5;
-  --color-bg-product-yellow: #efd478;
-  --color-bg-product-brown: #d6936d;
-  --color-bg-input: rgba(248, 210, 78, 0.1);
-  --cubic: 250ms cubic-bezier(0.4, 0, 0.2, 1); //!!!!!!!
-  --color-modal-bg-green: #9cbe8f;
-  --color-modal-bg-picture-shadow: rgba(156, 190, 143, 0.7);
-  --color-modal-bg-shadow-green: rgba(10, 136, 23, 0.25);
-  --color-coffee-shadow: rgba(248, 210, 78, 0.6);
-  --color-coffee-second-shadow: rgba(248, 210, 78, 0.9);
-  --color-shakes: #d6936d;
-  --color-shake-shadow: rgba(0, 0, 0, 0.25);
+
+  --font-mobile-scary: 'Butcherman', cursive;
+  --font-mobile-creepy: 'Nosifer', cursive;
+  --color-text-dark--team: #131313;
+  --color-btn-default--team: #f8d24e;
+  --cubic--team: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .heart-icon {
   width: 20px;
@@ -40,7 +25,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 1);
-  transition: opacity 300ms ease-in-out, visibility var(--cubic),
+  transition: opacity 300ms ease-in-out, visibility var(--cubic--team),
     transform 300ms linear;
   overflow-y: scroll;
   padding: 20px 1px;
@@ -93,7 +78,7 @@ body.modal-open--team {
 .modal--team {
   font-family: var(--font-mobile-scary);
   background-color: black;
-  border: 2px groove var(--color-btn-default);
+  border: 2px groove var(--color-btn-default--team);
   border-radius: 20%;
   margin-left: auto;
   margin-right: auto;
@@ -117,7 +102,7 @@ body.modal-open--team {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 568px;
+    width: 700px;
     max-height: 100%;
     overflow-y: scroll;
   }
@@ -128,66 +113,11 @@ body.modal-open--team {
 
   font-size: 20px;
   line-height: 1.4;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 
+  
   @media screen and (min-width: 768px) {
-    margin-bottom: 32px;
     font-size: 24px;
-  }
-}
-
-.modal__title--team::after {
-  content: '';
-
-  margin: 22px auto 0;
-  display: block;
-  width: 131px;
-  height: 131px;
-  border-radius: 50%;
-  background-color: var(--color-modal-bg-green);
-  background-image: url(../images/close-sign.png);
-  box-shadow: 0 5px var(--color-modal-bg-picture-shadow),
-    0 10px 20px var(--color-modal-bg-shadow-green);
-
-  @media screen and (min-width: 768px) {
-    margin-top: 24px;
-  }
-  @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    & {
-      background-image: url(../images/close-sign.png);
-      background-size: cover;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    background-image: url(../images/close-sign.png);
-
-    @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      & {
-        background-image: url(../images/close-sign.png);
-        background-size: cover;
-      }
-    }
-  }
-}
-
-.modal__title--scream::after {
-  background-color: red;
-  background-image: url(../images/logo.png);
-  background-size: cover;
-  background-position: -50px;
-  width: 200px;
-  height: 200px;
-  box-shadow: 0 10px 20px 6px white;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 15px;
   }
 }
 
@@ -207,54 +137,45 @@ body.modal-open--team {
   font-size: 14px;
   line-height: 1.29;
   border-radius: 10px;
-  padding: 12px 34px;
-  color: var(--color-text-dark);
-  background-color: var(--color-btn-default);
-  transition: color var(--cubic), background-color var(--cubic);
-
+  padding: 12px 15px;
+  color: var(--color-text-dark--team);
+  background-color: var(--color-btn-default--team);
+  transition: color var(--cubic), background-color var(--cubic--team);
+ 
+  @media screen and (min-width: 768px) {
+    padding: 12px 34px;
+  }
   &:hover,
   &:focus {
-    color: var(--color-btn-default);
-    background-color: var(--color-text-dark);
-    border: 1px solid var(--color-btn-default);
-    box-shadow: 0 0px 20px var(--color-btn-default);
+    color: var(--color-btn-default--team);
+    background-color: var(--color-text-dark--team);
+    border: 1px solid var(--color-btn-default--team);
+    box-shadow: 0 0px 20px var(--color-btn-default--team);
   }
 }
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-.nutrition {
+.custom-checkbox {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
   justify-content: center;
-  margin-bottom: 39px;
+  margin-bottom: 20px;
 
-  &--scream {
-    margin-bottom: 20px;
-  }
   @media screen and (min-width: 768px) {
     gap: 20px;
-    margin-bottom: 48px;
-
-    &--scream {
-      margin-bottom: 24px;
-    }
+    margin-bottom: 24px;
   }
 }
-.nutrition__info {
+
+.checkbox-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid var(--color-modal-bg-green);
+  border: 2px solid var(--color-btn-default--team);
   border-radius: 40%;
   text-overflow: ellipsis;
   width: 52px;
   height: 72px;
-
-  &--scream {
-    border-color: var(--color-btn-default);
-  }
 
   @media screen and (min-width: 768px) {
     width: 65px;
@@ -262,92 +183,126 @@ body.modal-open--team {
   }
 }
 
-.nutrition__amount {
-  font-size: 10px;
+
+.checkbox-container__checkbox:checked + .checkbox-container__text {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px var(--color-btn-default--team);
+}
+
+.checkbox-container__text {
+  font-size: 30px;
   font-weight: 500;
   line-height: 2.8;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-4px);
+  transform: translateY(29px);
 
   width: 43px;
   height: 43px;
+  border: 3px solid var(--color-btn-default--team);
+
   border-radius: 50%;
-  background-color: var(--color-modal-bg-green);
-  box-shadow: 0 6px 20px var(--color-modal-bg-shadow-green);
+  background-color: transparent;
   margin-bottom: 8px;
-
-  &--scream {
-    font-size: 30px;
-    background-color: transparent;
-    border: 3px solid var(--color-btn-default);
-
-    transform: translateY(37px);
-  }
 
   @media screen and (min-width: 768px) {
     width: 53px;
     height: 53px;
     margin-bottom: 7px;
-    font-size: 12px;
-
-    &--scream {
-      font-size: 40px;
-    }
+    font-size: 40px;
+    transform: translateY(37px);
   }
 }
 
-.nutrition__name {
+// Team cards
+
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  column-gap: 30px;
+  row-gap: 15px;
+  margin-bottom: 20px;
+ 
+}
+.member-card {
+  display: flex;
+  flex-direction: column;
+}
+.member-card__role {
+  font-size: 20px;
+  text-align: center;
+  color: yellow;
+  text-shadow: 2px 2px 10px #f8d24e;
+}
+.member-card__photo {
+  width: 131px;
+  height: 131px;
+  border-radius: 50%;
+  &:hover,
+  &:focus {
+    box-shadow: 0 10px 20px 6px white;
+  }
+  margin-bottom: 10px;
+
+}
+.member-card__name {
+  font-family: var(--font-mobile-creepy);
   font-size: 10px;
   line-height: 1.2;
   font-weight: 400;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-  max-width: 35px;
 
   @media screen and (min-width: 768px) {
-    font-size: 12px;
-    max-width: 52px;
+    font-size: 15px;
   }
-}
-.ingredients {
-  margin-bottom: 48px;
+  margin-bottom: 6px;
 
-  &--scream {
-    margin-bottom: 24px;
-  }
 }
-.ingredients__item {
+
+
+
+
+
+// Socials
+
+.social-networks__list {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 
-  font-size: 14px;
-  line-height: 1.8;
-  letter-spacing: 4%;
-
-  &:not(:last-child) {
-    margin-bottom: 11px;
-  }
-
-  &--scream {
-    font-size: 16px;
-
-    &:not(:last-child) {
-      margin-bottom: 0px;
-    }
-
-    @media screen and (min-width: 768px) {
-      font-size: 20px;
-    }
-  }
-}
-.checkbox-container {
-  width: 65px;
-  height: 90px;
+  justify-content: center;
+  gap: 30px;
 }
 
-.checkbox:checked + .nutrition__amount--scream {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px var(--color-btn-default);
+.social-networks__item {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--color-btn-default--team);
+}
+
+.social-networks__icon {
+  fill: black;
+  width: 20px;
+  height: 20px;
+  transition: fill 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  &--telegram {
+    transform: translateX(-1px);
+
+  }
+}
+
+.social-networks__link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover .social-networks__icon,
+  &:focus .social-networks__icon {
+    fill: white;
+    cursor: pointer;
+  }
 }
