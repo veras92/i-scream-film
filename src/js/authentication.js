@@ -4,7 +4,7 @@ import * as firebaseui from 'firebaseui';
 import 'firebase/compat/auth';
 import 'firebaseui/dist/firebaseui.css';
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyA8HI-hGo7_WkrdYi4nAbp8aOc6TTRuWvY',
   authDomain: 'filmoteka-c3101.firebaseapp.com',
   projectId: 'filmoteka-c3101',
@@ -25,7 +25,7 @@ const btnGoogleEl = document.querySelector('.login-modal__google');
 const btnLoginEl = document.querySelector('.js-login-btn');
 const linkLibraryEl = document.querySelector('.js-header-library');
 
-const app = firebase.initializeApp(firebaseConfig);
+export const app = firebase.initializeApp(firebaseConfig);
 
 // перевірка на вхід(авторизован користувач чи ні)
 window.addEventListener('load', () => {
