@@ -2,7 +2,6 @@ import './js/homepage';
 import './js/authentication';
 import './js/cards-home';
 import './js/cards-library';
-import './js/create-markup';
 import './js/film-service';
 import './js/homepage';
 import './js/loader';
