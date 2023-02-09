@@ -8,3 +8,4 @@ import './js/homepage';
 import './js/loader';
 import './js/tui-pagination';
 import './js/team_modal';
+import './js/modal-window';
