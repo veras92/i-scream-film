@@ -9,3 +9,4 @@ import './js/loader';
 import './js/tui-pagination';
 import './js/team_modal';
 import './js/modal-window';
+import './js/firebase';
