@@ -24,7 +24,7 @@ filmsApi
   })
   .catch(err => {
     hidePagination();
-    Notify.failure(err.message);
+    console.log(err.message);
   })
   .finally(() => {
     hideLoader();
@@ -40,7 +40,7 @@ async function loadMoreTrendingFilms(e) {
     renderCards(results);
   } catch (err) {
     hidePagination();
-    Notify.failure(err.message);
+    console.log(err.message);
   } finally {
     scrollToTop();
     hideLoader();
@@ -66,7 +66,7 @@ async function onFormSubmit(e) {
     showPagination();
   } catch (err) {
     hidePagination();
-    Notify.failure(err.message);
+    console.log(err.message);
   } finally {
     hideLoader();
     pagination.on('afterMove', loadMoreSearchingFilms);
@@ -81,7 +81,7 @@ async function loadMoreSearchingFilms(e) {
     renderCards(results);
   } catch (err) {
     hidePagination();
-    Notify.failure(err.message);
+    console.log(err.message);
   } finally {
     scrollToTop();
     hideLoader();
