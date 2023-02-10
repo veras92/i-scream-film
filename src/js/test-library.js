@@ -1,36 +1,72 @@
-// console.log('тестова перевірка на роботу імпортів');
-// import { getDatabase, ref, set, onValue, get, child } from 'firebase/database';
-// import { app } from './authentication';
-// import { getAuth } from 'firebase/auth';
-// import firebase from 'firebase/compat/app';
+import { getDatabase, ref, get } from 'firebase/database';
 
-// // const database = getDatabase(app);
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyA8HI-hGo7_WkrdYi4nAbp8aOc6TTRuWvY',
-//   authDomain: 'filmoteka-c3101.firebaseapp.com',
-//   projectId: 'filmoteka-c3101',
-//   storageBucket: 'filmoteka-c3101.appspot.com',
-//   messagingSenderId: '990735444623',
-//   appId: '1:990735444623:web:5585f899cc012270841efa',
+import { getAuth } from 'firebase/auth';
+import firebase from 'firebase/compat/app';
+import { FimlsApi } from './film-service';
 
-//   databaseURL: 'https://filmoteka-c3101-default-rtdb.firebaseio.com',
-// };
+// const database = getDatabase(app);
+const firebaseConfig = {
+  apiKey: 'AIzaSyA8HI-hGo7_WkrdYi4nAbp8aOc6TTRuWvY',
+  authDomain: 'filmoteka-c3101.firebaseapp.com',
+  projectId: 'filmoteka-c3101',
+  storageBucket: 'filmoteka-c3101.appspot.com',
+  messagingSenderId: '990735444623',
+  appId: '1:990735444623:web:5585f899cc012270841efa',
 
-// const app = firebase.initializeApp(firebaseConfig);
-// // отримуємо id користувача
-// function getUserId() {
-//   const auth = getAuth();
+  databaseURL: 'https://filmoteka-c3101-default-rtdb.firebaseio.com',
+};
 
-//   let userId = null;
-//   auth.onAuthStateChanged(user => {
-//     if (user) {
-//       userId = user.uid;
-//       //   writeUserData(userId);
-//       //   listenerDataBase(userId);
-//       //   getData(userId);
-//       console.log(userId);
-//     }
-//   });
-// }
+const app = firebase.initializeApp(firebaseConfig);
 
-// getUserId();
+const btnWatchedEl = document.querySelector('.js-watched-button');
+const btnQueueEl = document.querySelector('.js-queue-button');
+
+btnWatchedEl.addEventListener('click', onClickWatchedBtn);
+btnQueueEl.addEventListener('click', onClickQueueBtn);
+
+function onClickWatchedBtn() {
+  getUserId('watched');
+}
+function onClickQueueBtn() {
+  getUserId('queue');
+}
+async function getDataArray(userId, action) {
+  try {
+    const database = getDatabase(app);
+    const moviesRef = ref(database, `${userId}/${action}`);
+    const moviesSnapshot = await get(moviesRef);
+    const movies = moviesSnapshot.val();
+    if (movies) {
+      const moviesArray = Object.values(movies);
+      //тут масив з id
+      getFilms(moviesArray);
+      console.log(moviesArray);
+      return moviesArray;
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getFilms(filmsIdsArr) {
+  const filmsApi = new FimlsApi();
+  const filmsArr = await Promise.all(
+    filmsIdsArr.map(id => filmsApi.getFilmById(id))
+  );
+
+  // filmsArr масив з інфою про фільми
+  console.log(filmsArr);
+}
+
+function getUserId(action) {
+  const auth = getAuth();
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      const userId = user.uid;
+      getDataArray(userId, action);
+    }
+  });
+}
