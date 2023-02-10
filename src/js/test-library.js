@@ -1,10 +1,10 @@
 import { getDatabase, ref, get } from 'firebase/database';
-
 import { getAuth } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
 import { FimlsApi } from './film-service';
+import { createHomepageCards } from './cards-library';
+import { refs } from './refs';
 
-// const database = getDatabase(app);
 const firebaseConfig = {
   apiKey: 'AIzaSyA8HI-hGo7_WkrdYi4nAbp8aOc6TTRuWvY',
   authDomain: 'filmoteka-c3101.firebaseapp.com',
@@ -40,7 +40,7 @@ async function getDataArray(userId, action) {
       const moviesArray = Object.values(movies);
       //тут масив з id
       getFilms(moviesArray);
-      console.log(moviesArray);
+
       return moviesArray;
     } else {
       return [];
@@ -57,7 +57,8 @@ async function getFilms(filmsIdsArr) {
   );
 
   // filmsArr масив з інфою про фільми
-  console.log(filmsArr);
+  const markup = createHomepageCards(filmsArr);
+  renderMarkup(markup);
 }
 
 function getUserId(action) {
@@ -69,4 +70,8 @@ function getUserId(action) {
       getDataArray(userId, action);
     }
   });
+}
+
+function renderMarkup(markup) {
+  refs.list.innerHTML = markup;
 }
