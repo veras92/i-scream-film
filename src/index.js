@@ -10,5 +10,4 @@ import './js/team_modal';
 import './js/modal-window';
 import './js/firebase';
 import './js/library-modal';
-import './js/scroll-up-button';
 import './js/up-btn';
