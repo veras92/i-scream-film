@@ -1,12 +1,12 @@
 import { Report } from 'notiflix/build/notiflix-report-aio';
 // (() => {
 const refs = {
-  openModalBtn: document.querySelectorAll('[data-about-scream-modal-open]'),
+  openModalBtn: document.querySelector('[data-about-scream-modal-open]'),
   closeModalBtn: document.querySelector('[data-about-scream-modal-close]'),
   modal: document.querySelector('[data-about-scream-modal]'),
 };
 
-refs.openModalBtn.forEach(addEventListener('click', toggleModal));
+refs.openModalBtn.addEventListener('click', toggleModal);
 refs.closeModalBtn.addEventListener('click', toggleModal);
 
 function toggleModal() {
