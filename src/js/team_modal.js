@@ -1,4 +1,5 @@
 import { Report } from 'notiflix/build/notiflix-report-aio';
+import './team-data';
 // (() => {
 const refs = {
   openModalBtn: document.querySelector('[data-about-scream-modal-open]'),
