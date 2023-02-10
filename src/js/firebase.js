@@ -4,7 +4,8 @@ import { getAuth } from 'firebase/auth';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const modalWindowEl = document.querySelector('.modal-window');
-
+export const auth = getAuth();
+export const database = getDatabase(app);
 // натискання по кнопці модального вікна
 modalWindowEl.addEventListener('click', async e => {
   const clickOnWatched = e.target.classList.contains('js-modal-watched');
@@ -12,21 +13,38 @@ modalWindowEl.addEventListener('click', async e => {
   const cinemaInfoEl = document.querySelector('.cinema-info');
 
   const movieId = cinemaInfoEl.getAttribute('data-id');
+
+  const btnWatchedEl = document.querySelector('.js-modal-watched');
+  const btnQoeoeEl = document.querySelector('.js-modal-queue');
+
+  const btnWatchedTextContent = btnWatchedEl.textContent.toUpperCase();
+  const btnQoeoeTextContent = btnQoeoeEl.textContent.toUpperCase();
   if (clickOnWatched) {
     // якщо натиснули на js-modal-watched
     getUserId('watched', movieId);
+    // console.log(btnWatchedTextContent);
+    if (btnWatchedTextContent == 'add to watched'.toUpperCase()) {
+      btnWatchedEl.textContent = 'added'.toUpperCase();
+      // console.log('wastch');
+    } else {
+      btnWatchedEl.textContent = 'add to watched'.toUpperCase();
+    }
   }
   if (clickOnQueue) {
     // якщо натиснули на js-modal-queue
     getUserId('queue', movieId);
+
+    if (btnQoeoeTextContent == 'add to queue'.toUpperCase()) {
+      btnQoeoeEl.textContent = 'in queue'.toUpperCase();
+    } else {
+      btnQoeoeEl.textContent = 'add to queue'.toUpperCase();
+    }
   }
 });
 
 // // отримуємо id користувача
 
 function getUserId(action, movieId) {
-  const auth = getAuth();
-
   let userId = null;
   auth.onAuthStateChanged(async user => {
     if (user) {
@@ -39,17 +57,47 @@ function getUserId(action, movieId) {
 
 async function toggleWatchedMovie(id, userId, action) {
   try {
-    const database = getDatabase(app);
-    // console.log();
     const movieRef = ref(database, `${userId}/${action}/${id}`);
     const movieSnapshot = await get(movieRef);
     const movie = movieSnapshot.val();
+
     if (movie) {
       await remove(movieRef);
       Notify.failure('movie removed');
     } else {
       await set(movieRef, id);
+
       Notify.success('movie added');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+///chek
+
+export async function checkFilmInDB(id, userId) {
+  try {
+    const movieRefWatched = ref(database, `${userId}/watched/${id}`);
+    const movieRefQueue = ref(database, `${userId}/queue/${id}`);
+    const movieSnapshotWatched = await get(movieRefWatched);
+    const movieSnapshotQueue = await get(movieRefQueue);
+    const movieWatched = movieSnapshotWatched.val();
+    const movieQueue = movieSnapshotQueue.val();
+
+    const btnWatchedEl = document.querySelector('.js-modal-watched');
+    const btnQoeoeEl = document.querySelector('.js-modal-queue');
+
+    if (movieWatched) {
+      btnWatchedEl.textContent = 'added'.toUpperCase();
+    } else {
+      // немає фільму
+    }
+    if (movieQueue) {
+      console.log('queue є фільм');
+      btnQoeoeEl.textContent = 'in queue'.toUpperCase();
+    } else {
+      // немає фільму
     }
   } catch (error) {
     console.error(error);
