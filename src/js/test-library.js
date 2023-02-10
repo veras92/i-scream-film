@@ -23,6 +23,7 @@ const btnQueueEl = document.querySelector('.js-queue-button');
 
 btnWatchedEl.addEventListener('click', onClickWatchedBtn);
 btnQueueEl.addEventListener('click', onClickQueueBtn);
+// window.addEventListener('')
 
 function onClickWatchedBtn() {
   getUserId('watched');
@@ -36,6 +37,7 @@ async function getDataArray(userId, action) {
     const moviesRef = ref(database, `${userId}/${action}`);
     const moviesSnapshot = await get(moviesRef);
     const movies = moviesSnapshot.val();
+
     if (movies) {
       const moviesArray = Object.values(movies);
       //тут масив з id
@@ -43,6 +45,8 @@ async function getDataArray(userId, action) {
 
       return moviesArray;
     } else {
+      // якщо фільмі немає, очищає сторінку
+      refs.list.innerHTML = '';
       return [];
     }
   } catch (error) {
@@ -61,6 +65,10 @@ async function getFilms(filmsIdsArr) {
   renderMarkup(markup);
 }
 
+function renderMarkup(markup) {
+  refs.list.innerHTML = markup;
+}
+
 function getUserId(action) {
   const auth = getAuth();
 
@@ -70,8 +78,4 @@ function getUserId(action) {
       getDataArray(userId, action);
     }
   });
-}
-
-function renderMarkup(markup) {
-  refs.list.innerHTML = markup;
 }
