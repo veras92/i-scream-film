@@ -1,59 +1,57 @@
-import { getDatabase, ref, set, onValue, get, child } from 'firebase/database';
+import { getDatabase, ref, set, get, remove } from 'firebase/database';
 import { app } from './authentication';
 import { getAuth } from 'firebase/auth';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-// const database = getDatabase(app);
+const modalWindowEl = document.querySelector('.modal-window');
 
-// const btnModalWatched = document.querySelector('.btn-modal-cinema');
+// натискання по кнопці модального вікна
+modalWindowEl.addEventListener('click', async e => {
+  const clickOnWatched = e.target.classList.contains('js-modal-watched');
+  const clickOnQueue = e.target.classList.contains('js-modal-queue');
+  const cinemaInfoEl = document.querySelector('.cinema-info');
+
+  const movieId = cinemaInfoEl.getAttribute('data-id');
+  if (clickOnWatched) {
+    // якщо натиснули на js-modal-watched
+    getUserId('watched', movieId);
+  }
+  if (clickOnQueue) {
+    // якщо натиснули на js-modal-queue
+    getUserId('queue', movieId);
+  }
+});
 
 // // отримуємо id користувача
 
-// function getUserId() {
-//   const auth = getAuth();
-//   console.log(auth);
-//   let userId = null;
-//   auth.onAuthStateChanged(user => {
-//     if (user) {
-//       userId = user.uid;
-//       //   writeUserData(userId);
-//       //   listenerDataBase(userId);
-//       //   getData(userId);
-//       console.log(userId);
-//     }
-//   });
-// }
+function getUserId(action, movieId) {
+  const auth = getAuth();
 
-// getUserId();
+  let userId = null;
+  auth.onAuthStateChanged(async user => {
+    if (user) {
+      userId = user.uid;
 
-// function writeUserData(userId) {
-//   //   const db = getDatabase();
-//   set(ref(database, 'users/' + userId), {
-//     watched: ['batman', 'avatar'],
-//   });
-// }
+      await toggleWatchedMovie(movieId, userId, action);
+    }
+  });
+}
 
-// прослуховувач
-// function listenerDataBase(userId) {
-//   const starCountRef = ref(database, 'users/' + userId);
-//   onValue(starCountRef, snapshot => {
-//     const data = snapshot.val();
-//     console.log(data.watched);
-//     // updateStarCount(postElement, data);
-//   });
-// }
-
-// отримати данні один раз
-// function getData(userId) {
-//   const dbRef = ref(database);
-//   get(child(dbRef, `users/${userId}`))
-//     .then(snapshot => {
-//       if (snapshot.exists()) {
-//         console.log(snapshot.val());
-//       } else {
-//         console.log('No data available');
-//       }
-//     })
-//     .catch(error => {
-//       console.error(error);
-//     });
-// }
+async function toggleWatchedMovie(id, userId, action) {
+  try {
+    const database = getDatabase(app);
+    // console.log();
+    const movieRef = ref(database, `${userId}/${action}/${id}`);
+    const movieSnapshot = await get(movieRef);
+    const movie = movieSnapshot.val();
+    if (movie) {
+      await remove(movieRef);
+      Notify.failure('movie removed');
+    } else {
+      await set(movieRef, id);
+      Notify.success('movie added');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
