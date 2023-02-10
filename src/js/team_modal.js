@@ -2,17 +2,20 @@ import { Report } from 'notiflix/build/notiflix-report-aio';
 import './team-data';
 // (() => {
 const refs = {
-  openModalBtn: document.querySelector('[data-about-scream-modal-open]'),
-  closeModalBtn: document.querySelector('[data-about-scream-modal-close]'),
-  modal: document.querySelector('[data-about-scream-modal]'),
+  openTeamModalBtn: document.querySelectorAll('[data-about-scream-modal-open]'),
+  closeTeamModalBtn: document.querySelector('[data-about-scream-modal-close]'),
+  teamModal: document.querySelector('[data-about-scream-modal]'),
 };
 
-refs.openModalBtn.addEventListener('click', toggleModal);
-refs.closeModalBtn.addEventListener('click', toggleModal);
+refs.openTeamModalBtn.forEach(el => {
+  el.addEventListener('click', toggleModal);
+});
+refs.closeTeamModalBtn.addEventListener('click', toggleModal);
 
-function toggleModal() {
+function toggleModal(event) {
+  event.preventDefault();
   document.body.classList.toggle('modal-open--team');
-  refs.modal.classList.toggle('is-hidden--team');
+  refs.teamModal.classList.toggle('is-hidden--team');
 }
 // })();
 
