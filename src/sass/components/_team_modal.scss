@@ -1,8 +1,4 @@
 :root {
-  --desk: 1200px; // desktop
-  --tab: 768px; // tablet
-  --mob: 480px; // mobile
-
   --font-mobile-scary: 'Butcherman', cursive;
   --font-mobile-creepy: 'Nosifer', cursive;
   --color-text-dark--team: #131313;
@@ -115,7 +111,6 @@ body.modal-open--team {
   line-height: 1.4;
   margin-bottom: 20px;
 
-  
   @media screen and (min-width: 768px) {
     font-size: 24px;
   }
@@ -141,7 +136,7 @@ body.modal-open--team {
   color: var(--color-text-dark--team);
   background-color: var(--color-btn-default--team);
   transition: color var(--cubic), background-color var(--cubic--team);
- 
+
   @media screen and (min-width: 768px) {
     padding: 12px 34px;
   }
@@ -182,7 +177,6 @@ body.modal-open--team {
     height: 90px;
   }
 }
-
 
 .checkbox-container__checkbox:checked + .checkbox-container__text {
   transform: translateY(-4px);
@@ -225,11 +219,11 @@ body.modal-open--team {
   column-gap: 30px;
   row-gap: 15px;
   margin-bottom: 20px;
- 
 }
 .member-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .member-card__role {
   font-size: 20px;
@@ -246,7 +240,6 @@ body.modal-open--team {
     box-shadow: 0 10px 20px 6px white;
   }
   margin-bottom: 10px;
-
 }
 .member-card__name {
   font-family: var(--font-mobile-creepy);
@@ -258,12 +251,7 @@ body.modal-open--team {
     font-size: 15px;
   }
   margin-bottom: 6px;
-
 }
-
-
-
-
 
 // Socials
 
@@ -272,7 +260,7 @@ body.modal-open--team {
   flex-wrap: wrap;
 
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .social-networks__item {
@@ -289,7 +277,6 @@ body.modal-open--team {
   transition: fill 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   &--telegram {
     transform: translateX(-1px);
-
   }
 }
 
