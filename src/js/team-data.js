@@ -29,7 +29,7 @@ export const TeamData = [
     },
     {
         image: require("./../images/team/team4.jpg"),
-        name: 'Andriy',
+        name: 'Andrii',
         telegram: 'mar_murchikk',
         facebook: '',
         linkedIn: ''
