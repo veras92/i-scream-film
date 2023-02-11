@@ -2,28 +2,23 @@ import { FimlsApi } from './film-service';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { showLoader, hideLoader } from './loader';
 import { auth, checkFilmInDB } from './firebase';
+import {getSrc} from './cardsInfoCoverter';
 
-import {
-  getGenresList,
-  getFullYear,
-  getRaiting,
-  converTittle,
-  getSrc,
-} from './cardsInfoCoverter';
-
-const closeModalBtn = document.querySelector('.btn-modal');
 const backdrop = document.querySelector('.js-backdrop');
 const listLibrary = document.querySelector('.js-gallery');
 const cinemaCardWraper = document.querySelector('.modal-window');
+const bodyEl = document.querySelector('body');
 
-listLibrary.addEventListener('click', onCardClick);
-closeModalBtn.addEventListener('click', onCloseModal);
 backdrop.addEventListener('click', onBackdropClick);
+listLibrary.addEventListener('click', onCardClick);
+
 
 function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
-  document.body.classList.remove('show-modal');
+  backdrop.classList.add('is-hidden');
+  bodyEl.classList.remove('stop-scrol');
 }
+
 
 function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
@@ -39,41 +34,55 @@ function onEscKeyPress(event) {
 
 const filmsApi = new FimlsApi();
 
-async function onCardClick({ target }) {
-  window.addEventListener('keydown', onEscKeyPress);
-  document.body.classList.add('show-modal');
-
+async function onCardClick(e) {
+  e.preventDefault();
+  const { target } = e;
   const card = target.closest('.card');
-  if (card) {
-    const id = card.dataset.id;
-    try {
-      showLoader();
-      const data = await filmsApi.getFilmById(id);
-      console.log(data);
-      renderModalWindow(data);
-      // =============  перевірка
-      const cinemaInfoEl = document.querySelector('.cinema-info');
-      const movieId = cinemaInfoEl.getAttribute('data-id');
-      getUserId(movieId);
 
-      //==================
-    } catch (err) {
+  if (!card) return;
+  window.addEventListener('keydown', onEscKeyPress);
+  backdrop.classList.remove('is-hidden');
+  bodyEl.classList.add('stop-scrol');
+  const id = card.dataset.id;
+  try {
+    showLoader();
+    const data = await filmsApi.getFilmById(id);
+    console.log(data);
+    renderModalWindow(data);
+    // =============  перевірка
+    const cinemaInfoEl = document.querySelector('.cinema-info');
+    const movieId = cinemaInfoEl.getAttribute('data-id');
+    getUserId(movieId);
+
+    //==================
+  } catch (err) {
       Notify.failure(err.message);
     } finally {
       hideLoader();
     }
-  }
+
+  const closeModalBtn = document.querySelector('.btn-modal');
+  
+
+  closeModalBtn.addEventListener('click', onCloseModal);
+  
 }
 
 function renderModalWindow(data) {
   data.popularity = Math.round(data.popularity);
   data.vote_average = data.vote_average.toFixed(1);
+
   cinemaCardWraper.innerHTML = `
   <button type="button" class="btn-modal" data-modal-close>
-     
+      <svg class="modal-close-icon" width="14" height="14" 
+      <symbol id="icon-close" viewBox="0 0 32 32">
+      <path d="M32 3.223l-3.223-3.223-12.777 12.777-12.777-12.777-3.223 3.223 12.777 12.777-12.777 12.777 3.223 3.223 12.777-12.777 12.777 12.777 3.223-3.223-12.777-12.777 12.777-12.777z"></path>
+      </symbol>
+      >
+      </svg>
     </button>
  <div class="cinema-img">
- <img src="/9Rq14Eyrf7Tu1xk0Pl7VcNbNh1n.jpg" />
+  <img class="cinema-img_item" src="${getSrc(data.poster_path)}" alt="${data.title}"/>
  </div>
  <div class="cinema-info" data-id=${data.id}>
   <h1 class="cinema-info_item">${data.title}</h1>
@@ -85,18 +94,20 @@ function renderModalWindow(data) {
       <p class="cinema-atrtribute_item">Genre</p>
     </div>
     <div class="cinema-attrebute_value">
-      <p class="cinema-attrebute_value__item">${data.vote_average} / ${data.vote_count}</p>
+      <p class="cinema-attrebute_value__item"><span class="vote">${data.vote_average}</span>  /  <span class="vote-count">${data.vote_count}</span></p>
       <p class="cinema-attrebute_value__item">${data.popularity}</p>
       <p class="cinema-attrebute_value__item">${data.title}</p>
-      <p class="cinema-attrebute_value__item">Ganrs</p>
+      <p class="cinema-attrebute_value__item">${data.genres.map((genre) => `${genre.name}`).join(', ')}</p>
     </div>
   </div>
   <div class="cinema-about">
-    <h2 class="cinema-about_item">About</h2>
+    <h2 class="cinema-about_item">ABOUT</h2>
     <p class="cinema-about_description">${data.overview}</p>
   </div>
-  <button type="button" class="btn-modal-cinema js-modal-watched">ADD TO WATCHED</button>
-  <button type="button" class="btn-modal-cinema js-modal-queue">ADD TO QUEUE</button>`;
+  <div class="button-modal-cinema">
+  <button type="button" class="btn-modal-cinema_item js-modal-watched">ADD TO WATCHED</button>
+  <button type="button" class="btn-modal-cinema_item js-modal-queue">ADD TO QUEUE</button>
+  </div>`;
 }
 
 // перевірка в базу даних і зміна значення кнопок
