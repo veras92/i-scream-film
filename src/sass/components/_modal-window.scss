@@ -11,7 +11,8 @@
   height: 100vh;
   background-color:rgba(0, 0, 0, 0.5);
   z-index: 999;
-  
+  overflow-y: scroll;
+
   transition: opacity 250ms linear, visibility 250ms linear;
   
 } 
@@ -29,7 +30,7 @@
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
-
+  overflow-y: scroll;
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 552px;
