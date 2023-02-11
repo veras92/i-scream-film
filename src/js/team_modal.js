@@ -99,8 +99,10 @@ function createLeadCard({ role, image, name, telegram, facebook, linkedIn }) {
         referrerpolicy="no-referrer"
         class="social-networks__link"
       >
-        <svg class="social-networks__icon" <symbol id="icon-linkedin" viewBox="0 0 32 32">
-        <path d="M29 0h-26c-1.65 0-3 1.35-3 3v26c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3v-26c0-1.65-1.35-3-3-3zM12 26h-4v-14h4v14zM10 10c-1.106 0-2-0.894-2-2s0.894-2 2-2c1.106 0 2 0.894 2 2s-0.894 2-2 2zM26 26h-4v-8c0-1.106-0.894-2-2-2s-2 0.894-2 2v8h-4v-14h4v2.481c0.825-1.131 2.087-2.481 3.5-2.481 2.488 0 4.5 2.238 4.5 5v9z"></path>
+        <svg class="social-networks__icon" <symbol id="icon-linkedin2" viewBox="0 0 32 32">
+        <path d="M12 12h5.535v2.837h0.079c0.77-1.381 2.655-2.837 5.464-2.837 5.842 0 6.922 3.637 6.922 8.367v9.633h-5.769v-8.54c0-2.037-0.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509v8.688h-5.767v-18z"></path>
+        <path d="M2 12h6v18h-6v-18z"></path>
+        <path d="M8 7c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
         </symbol>>
         
         </svg>
@@ -153,8 +155,10 @@ function createTeamCard({ image, name, telegram, facebook, linkedIn }) {
         referrerpolicy="no-referrer"
         class="social-networks__link"
       >
-        <svg class="social-networks__icon" <symbol id="icon-linkedin" viewBox="0 0 32 32">
-        <path d="M29 0h-26c-1.65 0-3 1.35-3 3v26c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3v-26c0-1.65-1.35-3-3-3zM12 26h-4v-14h4v14zM10 10c-1.106 0-2-0.894-2-2s0.894-2 2-2c1.106 0 2 0.894 2 2s-0.894 2-2 2zM26 26h-4v-8c0-1.106-0.894-2-2-2s-2 0.894-2 2v8h-4v-14h4v2.481c0.825-1.131 2.087-2.481 3.5-2.481 2.488 0 4.5 2.238 4.5 5v9z"></path>
+        <svg class="social-networks__icon" <symbol id="icon-linkedin2" viewBox="0 0 32 32">
+        <path d="M12 12h5.535v2.837h0.079c0.77-1.381 2.655-2.837 5.464-2.837 5.842 0 6.922 3.637 6.922 8.367v9.633h-5.769v-8.54c0-2.037-0.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509v8.688h-5.767v-18z"></path>
+        <path d="M2 12h6v18h-6v-18z"></path>
+        <path d="M8 7c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
         </symbol>>
         
         </svg>
