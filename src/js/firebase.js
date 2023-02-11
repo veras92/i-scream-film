@@ -1,9 +1,24 @@
+import firebase from 'firebase/compat/app';
 import { getDatabase, ref, set, get, remove } from 'firebase/database';
-import { app } from './authentication';
+// import { app } from './authentication';
 import { getAuth } from 'firebase/auth';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { showLoader, hideLoader } from './loader';
+// console.log(showLoader);
+const firebaseConfig = {
+  apiKey: 'AIzaSyA8HI-hGo7_WkrdYi4nAbp8aOc6TTRuWvY',
+  authDomain: 'filmoteka-c3101.firebaseapp.com',
+  projectId: 'filmoteka-c3101',
+  storageBucket: 'filmoteka-c3101.appspot.com',
+  messagingSenderId: '990735444623',
+  appId: '1:990735444623:web:5585f899cc012270841efa',
+
+  databaseURL: 'https://filmoteka-c3101-default-rtdb.firebaseio.com',
+};
+const app = firebase.initializeApp(firebaseConfig);
 
 const modalWindowEl = document.querySelector('.modal-window');
+// console.log(modalWindowEl);
 export const auth = getAuth();
 export const database = getDatabase(app);
 // натискання по кнопці модального вікна
@@ -24,7 +39,7 @@ modalWindowEl.addEventListener('click', async e => {
     getUserId('watched', movieId);
     // console.log(btnWatchedTextContent);
     if (btnWatchedTextContent == 'add to watched'.toUpperCase()) {
-      btnWatchedEl.textContent = 'added'.toUpperCase();
+      btnWatchedEl.textContent = 'remove from watched'.toUpperCase();
       // console.log('wastch');
     } else {
       btnWatchedEl.textContent = 'add to watched'.toUpperCase();
@@ -35,7 +50,7 @@ modalWindowEl.addEventListener('click', async e => {
     getUserId('queue', movieId);
 
     if (btnQoeoeTextContent == 'add to queue'.toUpperCase()) {
-      btnQoeoeEl.textContent = 'in queue'.toUpperCase();
+      btnQoeoeEl.textContent = 'remove from queue'.toUpperCase();
     } else {
       btnQoeoeEl.textContent = 'add to queue'.toUpperCase();
     }
