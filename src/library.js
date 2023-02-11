@@ -9,3 +9,4 @@ import './js/loader';
 import './js/firebase';
 import './js/heart-animation';
 import './js/firebase-config';
+import './js/modal-window';
