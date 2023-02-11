@@ -1,3 +1,15 @@
 .homepage-main {
   min-height: calc(100vh - 82px - 216px);
 }
+
+.library-title-item {
+  margin: 0 auto;
+}
+
+.library-title-main {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.17;
+  text-transform: uppercase;
+  color: var(--color-error);
+}
