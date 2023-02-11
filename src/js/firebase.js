@@ -100,7 +100,6 @@ export async function checkFilmInDB(id, userId) {
       btnWatchedEl.textContent = 'remove from watched'.toUpperCase();
     }
     if (movieQueue) {
-      console.log('queue є фільм');
       btnQoeoeEl.textContent = 'remove from queue'.toUpperCase();
     }
   } catch (error) {
