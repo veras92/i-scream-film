@@ -129,7 +129,8 @@ body.modal-open--team {
   color: var(--color-text-dark--team);
   background-color: var(--color-btn-default--team);
   transition: color var(--cubic), background-color var(--cubic--team);
-
+  margin-bottom: 20px;
+  
   @media screen and (min-width: 768px) {
     padding: 12px 34px;
   }
