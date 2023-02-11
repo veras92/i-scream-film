@@ -19,12 +19,12 @@
   overflow-y: scroll;
   padding: 20px 1px;
   z-index: 5;
-  &.is-hidden--team {
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-    transform: scale(0.9);
-  }
+  // &.is-hidden--team {
+  //   opacity: 0;
+  //   pointer-events: none;
+  //   visibility: hidden;
+  //   transform: scale(0.9);
+  // }
 }
 
 body.modal-open--team {
@@ -130,7 +130,7 @@ body.modal-open--team {
   background-color: var(--color-btn-default--team);
   transition: color var(--cubic), background-color var(--cubic--team);
   margin-bottom: 20px;
-  
+
   @media screen and (min-width: 768px) {
     padding: 12px 34px;
   }

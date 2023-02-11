@@ -20,7 +20,7 @@ refs.closeTeamModalBtn.addEventListener('click', toggleModal);
 function toggleModal(event) {
   event.preventDefault();
   document.body.classList.toggle('modal-open--team');
-  refs.teamModal.classList.toggle('is-hidden--team');
+  refs.teamModal.classList.toggle('visually-hidden');
 }
 
 // Button function
