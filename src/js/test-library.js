@@ -4,6 +4,7 @@ import firebase from 'firebase/compat/app';
 import { FimlsApi } from './film-service';
 import { createHomepageCards } from './cards-library';
 import { refs } from './refs';
+import { showLoader, hideLoader } from './loader';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA8HI-hGo7_WkrdYi4nAbp8aOc6TTRuWvY',
@@ -33,10 +34,24 @@ function onClickQueueBtn() {
 }
 async function getDataArray(userId, action) {
   try {
+    showLoader();
     const database = getDatabase(app);
     const moviesRef = ref(database, `${userId}/${action}`);
     const moviesSnapshot = await get(moviesRef);
     const movies = moviesSnapshot.val();
+
+    if (action === 'watched') {
+      if (!movies) {
+        refs.list.innerHTML =
+          '<li><h2 class="library-title-main">You have nothing on your watch list</h2></li>';
+      }
+    }
+    if (action === 'queue') {
+      if (!movies) {
+        refs.list.innerHTML =
+          '<li><h2 class="library-title-main">There is nothing in the queue</h2></li>';
+      }
+    }
 
     if (movies) {
       const moviesArray = Object.values(movies);
@@ -46,11 +61,13 @@ async function getDataArray(userId, action) {
       return moviesArray;
     } else {
       // якщо фільмі немає, очищає сторінку
-      refs.list.innerHTML = '';
+      // refs.list.innerHTML = '';
       return [];
     }
   } catch (error) {
     console.error(error);
+  } finally {
+    hideLoader();
   }
 }
 
