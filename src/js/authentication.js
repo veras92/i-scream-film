@@ -3,17 +3,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import * as firebaseui from 'firebaseui';
 import 'firebase/compat/auth';
 import 'firebaseui/dist/firebaseui.css';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyA8HI-hGo7_WkrdYi4nAbp8aOc6TTRuWvY',
-  authDomain: 'filmoteka-c3101.firebaseapp.com',
-  projectId: 'filmoteka-c3101',
-  storageBucket: 'filmoteka-c3101.appspot.com',
-  messagingSenderId: '990735444623',
-  appId: '1:990735444623:web:5585f899cc012270841efa',
-
-  databaseURL: 'https://filmoteka-c3101-default-rtdb.firebaseio.com',
-};
+import { app } from './firebase-config';
 
 const firebaseContainerEl = document.querySelector(
   '.firebaseui-auth-container'
@@ -24,8 +14,6 @@ const btnEmailEl = document.querySelector('.login-modal__email');
 const btnGoogleEl = document.querySelector('.login-modal__google');
 const btnLoginEl = document.querySelector('.js-login-btn');
 const linkLibraryEl = document.querySelector('.js-header-library');
-
-const app = firebase.initializeApp(firebaseConfig);
 
 // перевірка на вхід(авторизован користувач чи ні)
 window.addEventListener('load', () => {

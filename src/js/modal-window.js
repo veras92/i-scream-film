@@ -1,8 +1,9 @@
 import { FimlsApi } from './film-service';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { showLoader, hideLoader } from './loader';
-import { auth, checkFilmInDB } from './firebase';
-import {getSrc} from './cardsInfoCoverter';
+import { checkFilmInDB } from './firebase';
+import { getSrc } from './cardsInfoCoverter';
+import { auth } from './firebase-config';
 
 const backdrop = document.querySelector('.js-backdrop');
 const listLibrary = document.querySelector('.js-gallery');
@@ -12,13 +13,11 @@ const bodyEl = document.querySelector('body');
 backdrop.addEventListener('click', onBackdropClick);
 listLibrary.addEventListener('click', onCardClick);
 
-
 function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
   backdrop.classList.add('is-hidden');
   bodyEl.classList.remove('stop-scrol');
 }
-
 
 function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
@@ -47,7 +46,7 @@ async function onCardClick(e) {
   try {
     showLoader();
     const data = await filmsApi.getFilmById(id);
-    console.log(data);
+
     renderModalWindow(data);
     // =============  перевірка
     const cinemaInfoEl = document.querySelector('.cinema-info');
@@ -56,16 +55,14 @@ async function onCardClick(e) {
 
     //==================
   } catch (err) {
-      Notify.failure(err.message);
-    } finally {
-      hideLoader();
-    }
+    Notify.failure(err.message);
+  } finally {
+    hideLoader();
+  }
 
   const closeModalBtn = document.querySelector('.btn-modal');
-  
 
   closeModalBtn.addEventListener('click', onCloseModal);
-  
 }
 
 function renderModalWindow(data) {
@@ -82,7 +79,9 @@ function renderModalWindow(data) {
       </svg>
     </button>
  <div class="cinema-img">
-  <img class="cinema-img_item" src="${getSrc(data.poster_path)}" alt="${data.title}"/>
+  <img class="cinema-img_item" src="${getSrc(data.poster_path)}" alt="${
+    data.title
+  }"/>
  </div>
  <div class="cinema-info" data-id=${data.id}>
   <h1 class="cinema-info_item">${data.title}</h1>
@@ -94,10 +93,14 @@ function renderModalWindow(data) {
       <p class="cinema-atrtribute_item">Genre</p>
     </div>
     <div class="cinema-attrebute_value">
-      <p class="cinema-attrebute_value__item"><span class="vote">${data.vote_average}</span>  /  <span class="vote-count">${data.vote_count}</span></p>
+      <p class="cinema-attrebute_value__item"><span class="vote">${
+        data.vote_average
+      }</span>  /  <span class="vote-count">${data.vote_count}</span></p>
       <p class="cinema-attrebute_value__item">${data.popularity}</p>
       <p class="cinema-attrebute_value__item">${data.title}</p>
-      <p class="cinema-attrebute_value__item">${data.genres.map((genre) => `${genre.name}`).join(', ')}</p>
+      <p class="cinema-attrebute_value__item">${data.genres
+        .map(genre => `${genre.name}`)
+        .join(', ')}</p>
     </div>
   </div>
   <div class="cinema-about">
