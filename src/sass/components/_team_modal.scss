@@ -1,8 +1,4 @@
 :root {
-  --desk: 1200px; // desktop
-  --tab: 768px; // tablet
-  --mob: 480px; // mobile
-
   --font-mobile-scary: 'Butcherman', cursive;
   --font-mobile-creepy: 'Nosifer', cursive;
   --color-text-dark--team: #131313;
@@ -227,6 +223,7 @@ body.modal-open--team {
 .member-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .member-card__role {
   font-size: 20px;
@@ -263,7 +260,7 @@ body.modal-open--team {
   flex-wrap: wrap;
 
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .social-networks__item {
