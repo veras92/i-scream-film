@@ -12,3 +12,4 @@ import './js/firebase';
 import './js/library-modal';
 import './js/up-btn';
 import './js/heart-animation';
+import './js/firebase-config';

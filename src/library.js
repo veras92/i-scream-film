@@ -7,3 +7,5 @@ import './js/cards-library';
 import './js/film-service';
 import './js/loader';
 import './js/firebase';
+import './js/heart-animation';
+import './js/firebase-config';
