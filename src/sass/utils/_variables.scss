@@ -1,8 +1,5 @@
 :root {
   --font-primary: 'Roboto', sans-serif;
-  --desk: 1200px; // desktop
-  --tab: 768px; // tablet
-  --mob: 480px; // mobiles
   --color-bg-primary: #ffffff;
   --color-text-light: #ffffff;
   --color-text-dark: #000000;
@@ -11,9 +8,4 @@
   --color-card__text: #ff6b08;
   --color-error: #ff001b;
   --color-accent: #ff6b01;
-  --font-mobile-scary: 'Butcherman', cursive;
-  --font-mobile-creepy: 'Nosifer', cursive;
-  --color-text-dark--team: #131313;
-  --color-btn-default--team: #f8d24e;
-  --cubic--team: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
