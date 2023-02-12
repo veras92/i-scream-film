@@ -16,7 +16,7 @@ export const createHomepageCards = results => {
       const raiting = getRaiting(vote_average);
       return `
       <li class="card" data-id="${id}">
-        <a href="" class="card__link">
+        <a href="#" class="card__link">
           <img class="card__img" src="${src}" alt="${title}" loading="lazy" />
           <h2 class="card__title">${convertedTitle}</h2>
           <p class="card__text">${genresList} | ${year} <span class="card__text_rating">${raiting}</span></p>
