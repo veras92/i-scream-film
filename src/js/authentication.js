@@ -14,6 +14,7 @@ const btnEmailEl = document.querySelector('.login-modal__email');
 const btnGoogleEl = document.querySelector('.login-modal__google');
 const btnLoginEl = document.querySelector('.js-login-btn');
 const linkLibraryEl = document.querySelector('.js-header-library');
+const closeAuthBtn = document.querySelector('.auth-backdrop-close');
 
 // перевірка на вхід(авторизован користувач чи ні)
 window.addEventListener('load', () => {
@@ -28,12 +29,6 @@ window.addEventListener('load', () => {
     }
   });
 });
-
-btnLoginEl.addEventListener('click', () => {
-  backDropEl.classList.remove('logging--is-hiden');
-});
-btnGoogleEl.addEventListener('click', googleAuthentication);
-btnEmailEl.addEventListener('click', emailAuthentication);
 
 //авторизація через гугл
 
@@ -95,9 +90,13 @@ function emailAuthentication() {
   });
 }
 
-//  ================== figatix
-
-const closeAuthBtn = document.querySelector('.auth-backdrop-close');
+// модальне вікно логіну
+btnLoginEl.addEventListener('click', () => {
+  backDropEl.classList.remove('logging--is-hiden');
+  window.addEventListener('keydown', onEscKeyPress);
+});
+btnGoogleEl.addEventListener('click', googleAuthentication);
+btnEmailEl.addEventListener('click', emailAuthentication);
 
 closeAuthBtn.addEventListener('click', () => {
   backDropEl.classList.add('logging--is-hiden');
@@ -106,4 +105,22 @@ closeAuthBtn.addEventListener('click', () => {
   firebaseContainerEl.classList.add('display-none');
 });
 
-// ================== figatix
+backDropEl.addEventListener('click', onBackdropModalClick);
+
+function onCloseModal() {
+  window.removeEventListener('keydown', onEscKeyPress);
+  backDropEl.classList.add('logging--is-hiden');
+}
+
+function onBackdropModalClick(event) {
+  if (event.currentTarget === event.target) {
+    onCloseModal();
+  }
+}
+
+function onEscKeyPress(event) {
+  if (event.code === 'Escape') {
+    onCloseModal();
+  }
+}
+//
