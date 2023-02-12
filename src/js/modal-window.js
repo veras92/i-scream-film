@@ -86,22 +86,24 @@ function renderModalWindow(data) {
  <div class="cinema-info" data-id=${data.id}>
   <h1 class="cinema-info_item">${data.title}</h1>
   <div class="cinema-info__list">
-    <div class="cinema-attribute">
-      <p class="cinema-atrtribute_item">Vote / Votes</p>
-      <p class="cinema-atrtribute_item">Popularity</p>
-      <p class="cinema-atrtribute_item">Original Title</p>
-      <p class="cinema-atrtribute_item">Genre</p>
-    </div>
-    <div class="cinema-attrebute_value">
-      <p class="cinema-attrebute_value__item"><span class="vote">${
-        data.vote_average
-      }</span>  /  <span class="vote-count">${data.vote_count}</span></p>
-      <p class="cinema-attrebute_value__item">${data.popularity}</p>
-      <p class="cinema-attrebute_value__item">${data.title}</p>
-      <p class="cinema-attrebute_value__item">${data.genres
-        .map(genre => `${genre.name}`)
-        .join(', ')}</p>
-    </div>
+  <table class="cinema-table">
+  <tr class="cinema-info_table">
+    <td class="cinema-attribute">Vote / Votes</td>
+    <td class="cinema-attribute_item"><span class="vote">${data.vote_average}</span> / <span class="vote-count">${data.vote_count}</span></span></td>
+  </tr>
+  <tr class="cinema-info_table">
+    <td class="cinema-attribute">Popularity</td>
+    <td class="cinema-attribute_item">${data.popularity}</td>
+  </tr>
+  <tr class="cinema-info_table">
+    <td class="cinema-attribute">Original Title</td>
+    <td class="cinema-attribute_item">${data.title}</td>
+  </tr>
+  <tr class="cinema-info_table">
+    <td class="cinema-attribute">Genre</td>
+    <td class="cinema-attribute_item">${data.genres.map(genre => `${genre.name}`).join(', ')}</td>
+  </tr>
+</table>
   </div>
   <div class="cinema-about">
     <h2 class="cinema-about_item">ABOUT</h2>
