@@ -61,6 +61,7 @@ async function onFormSubmit(e) {
     showLoader();
     const { results, total_pages } = await filmsApi.getFilmsByKeyword(page);
     if (results.length === 0) return showErr(errorText.noResults);
+    refs.errText.innerText = '';
     pagination.reset(total_pages);
     renderCards(results);
     showPagination();
