@@ -109,9 +109,9 @@ btnLoginEl.addEventListener('click', () => {
 
 closeAuthBtn.addEventListener('click', () => {
   backDropEl.classList.add('logging--is-hiden');
-  modalContentEl.classList.remove('display-none');
-  modalContentEl.classList.remove('logging--is-hiden');
-  firebaseContainerEl.classList.add('display-none');
+  // modalContentEl.classList.remove('display-none');
+  // modalContentEl.classList.remove('logging--is-hiden');
+  // firebaseContainerEl.classList.add('display-none');
 });
 
 backDropEl.addEventListener('click', onBackdropModalClick);
