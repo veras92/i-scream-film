@@ -10,11 +10,12 @@ const firebaseContainerEl = document.querySelector(
 );
 const backDropEl = document.querySelector('.backdrop-login');
 const modalContentEl = document.querySelector('.login-modal__content');
-const btnEmailEl = document.querySelector('.login-modal__email');
-const btnGoogleEl = document.querySelector('.login-modal__google');
+// const btnEmailEl = document.querySelector('.login-modal__email');
+// const btnGoogleEl = document.querySelector('.login-modal__google');
 const btnLoginEl = document.querySelector('.js-login-btn');
 const linkLibraryEl = document.querySelector('.js-header-library');
 const closeAuthBtn = document.querySelector('.auth-backdrop-close');
+const btnLogoutEl = document.querySelector('.js-logout-btn');
 
 // перевірка на вхід(авторизован користувач чи ні)
 window.addEventListener('load', () => {
@@ -22,10 +23,12 @@ window.addEventListener('load', () => {
     if (user) {
       //   User is signed in
       btnLoginEl.classList.add('logging--is-hiden');
+      btnLogoutEl.classList.remove('logging--is-hiden');
       linkLibraryEl.classList.remove('logging--is-hiden');
     } else {
       //   User is not signed in.
       btnLoginEl.classList.remove('logging--is-hiden');
+      btnLogoutEl.classList.add('logging--is-hiden');
     }
   });
 });
@@ -86,7 +89,7 @@ function emailAuthentication() {
     queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
-    signInSuccessUrl: '<url-to-redirect-to-on-success>',
+    signInSuccessUrl: 'home',
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -107,6 +110,7 @@ btnLoginEl.addEventListener('click', () => {
   window.addEventListener('keydown', onEscKeyPress);
 });
 
+btnLogoutEl.addEventListener('click', onLogoutClick);
 closeAuthBtn.addEventListener('click', () => {
   backDropEl.classList.add('logging--is-hiden');
   // modalContentEl.classList.remove('display-none');
@@ -115,6 +119,12 @@ closeAuthBtn.addEventListener('click', () => {
 });
 
 backDropEl.addEventListener('click', onBackdropModalClick);
+
+function onLogoutClick() {
+  const auth = getAuth();
+  auth.signOut();
+  linkLibraryEl.classList.add('logging--is-hiden');
+}
 
 function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
