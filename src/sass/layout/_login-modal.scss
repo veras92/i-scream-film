@@ -109,3 +109,16 @@
   transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out,
     transform 300ms linear;
 }
+
+.btn-container {
+  position: relative;
+}
+.js-logout-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 71px;
+
+  transform: translate(-50%, -50%);
+  // display: none;
+}
