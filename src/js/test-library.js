@@ -27,6 +27,7 @@ function onClickQueueBtn() {
 async function getDataArray(userId, action) {
   try {
     showLoader();
+
     const database = getDatabase(app);
     const moviesRef = ref(database, `${userId}/${action}`);
     const moviesSnapshot = await get(moviesRef);
@@ -47,6 +48,7 @@ async function getDataArray(userId, action) {
 
     if (movies) {
       const moviesArray = Object.values(movies);
+      console.log(moviesArray);
       //тут масив з id
       getFilms(moviesArray);
 
@@ -70,6 +72,7 @@ async function getFilms(filmsIdsArr) {
   );
 
   // filmsArr масив з інфою про фільми
+  console.log(filmsArr);
   const markup = createHomepageCards(filmsArr);
   renderMarkup(markup);
 }
