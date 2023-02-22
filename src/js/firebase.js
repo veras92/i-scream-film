@@ -6,7 +6,7 @@ import { app, auth, database } from './firebase-config';
 const modalWindowEl = document.querySelector('.modal-window');
 
 // натискання по кнопці модального вікна
-modalWindowEl.addEventListener('click', async e => {
+modalWindowEl.addEventListener('click', e => {
   const clickOnWatched = e.target.classList.contains('js-modal-watched');
   const clickOnQueue = e.target.classList.contains('js-modal-queue');
   const cinemaInfoEl = document.querySelector('.cinema-info');
@@ -26,21 +26,29 @@ modalWindowEl.addEventListener('click', async e => {
 // // отримуємо id користувача
 
 function getUserId(action, movieId) {
-  let userId = null;
-  auth.onAuthStateChanged(async user => {
-    if (user) {
-      userId = user.uid;
+  try {
+    let userId = null;
+    auth.onAuthStateChanged(async user => {
+      if (user) {
+        userId = user.uid;
 
-      await toggleWatchedMovie(movieId, userId, action);
-    }
-  });
+        await toggleWatchedMovie(movieId, userId, action);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function toggleWatchedMovie(id, userId, action) {
   try {
     const movieRef = ref(database, `${userId}/${action}/${id}`);
     const movieSnapshot = await get(movieRef);
+
+    // console.log(movieSnapshot);
+
     const movie = movieSnapshot.val();
+    // console.log(movie);
 
     if (movie) {
       await remove(movieRef);
